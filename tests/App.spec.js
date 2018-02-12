@@ -8,17 +8,31 @@ test('component has a name', () => {
 
 test('default data is correct', () => {
   const wrapper = mount(App);
-  expect(wrapper.vm.msg).toBe('Hello World!');
+  expect(wrapper.vm.msg).toBe('');
+  expect(wrapper.vm.firstName).toBe('');
+  expect(wrapper.vm.lastName).toBe('');
 });
 
 test('msg data is displayed', () => {
   const wrapper = mount(App);
+  wrapper.setData({ msg: 'Hello World!' });
   expect(wrapper.text()).toContain('Hello World!');
 });
 
-test('msg changes when button is clicked', () => {
+test('msg is bound to input value', () => {
   const wrapper = mount(App);
-  const button = wrapper.find('button');
-  button.trigger('click');
+  wrapper.setData({ msg: 'Initial text' });
+  const input = wrapper.find('input');
+  input.element.value = 'Updated text';
+  input.trigger('input');
   expect(wrapper.html()).toContain('Updated text');
+});
+
+test('fullName computed is firstName + lastName', () => {
+  const wrapper = mount(App);
+  wrapper.setData({
+    firstName: 'John',
+    lastName: 'Doe'
+  });
+  expect(wrapper.vm.fullName).toBe('John Doe');
 });

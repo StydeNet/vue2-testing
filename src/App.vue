@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button @click="msg = 'Updated text'">Update me</button>
+    <input type="text" v-model="msg">
     <span>{{ msg }}</span>
   </div>
 </template>
@@ -10,8 +10,16 @@ export default {
   name: 'App',
   data() {
     return {
-      msg: 'Hello World!'
+      msg: '',
+      firstName: '',
+      lastName: ''
     };
+  },
+
+  computed: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
+    }
   }
 };
 </script>
