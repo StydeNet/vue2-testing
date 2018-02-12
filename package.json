@@ -11,11 +11,13 @@
     "test": "jest --watch"
   },
   "dependencies": {
-    "vue": "^2.5.11"
+    "vue": "^2.5.11",
+    "vue-jest": "^2.1.0"
   },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
@@ -32,8 +34,12 @@
   "jest": {
     "moduleFileExtensions": ["js", "json", "vue"],
     "transform": {
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
-    "mapCoverage": true
+    "mapCoverage": true,
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }
