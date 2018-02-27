@@ -68,3 +68,48 @@ test('firstName is in uppercase when toUppercase method is called', () => {
   wrapper.vm.toUppercase();
   expect(wrapper.vm.firstName).toBe('JOHN');
 });
+
+test('msg is displayed inside message span', () => {
+  const wrapper = mount(App);
+  wrapper.setData({
+    msg: 'Hello World'
+  });
+  const span = wrapper.find('span#message');
+  expect(span.text()).toBe('Hello World');
+});
+
+test('fullName is displayed inside full-name span', () => {
+  const wrapper = mount(App, {
+    computed: { fullName: () => 'John Doe' }
+  });
+  const span = wrapper.find('span#full-name');
+  expect(span.text()).toBe('John Doe');
+});
+
+test('message is displayed before full-name', () => {
+  const wrapper = mount(App, {
+    computed: { fullName: () => 'John Doe' }
+  });
+  wrapper.setData({
+    msg: 'Hello World'
+  });
+  const spans = wrapper.findAll('span');
+  expect(spans.wrappers[0].text()).toBe('Hello World');
+  expect(spans.wrappers[1].text()).toBe('John Doe');
+});
+
+test('warning is displayed if msg is empty', () => {
+  const wrapper = mount(App);
+  wrapper.setData({
+    msg: ''
+  });
+  expect(wrapper.contains('#warning')).toBe(true);
+});
+
+test('warning is not displayed if msg is not empty', () => {
+  const wrapper = mount(App);
+  wrapper.setData({
+    msg: 'something'
+  });
+  expect(wrapper.contains('#warning')).toBe(false);
+});

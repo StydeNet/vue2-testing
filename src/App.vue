@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <div id="warning" v-if="!msg">Please fill the message</div>
     <input type="text" v-model="msg">
-    <span>{{ msg }}</span>
-    <span>{{ fullName }}</span>
+    <span id="message">{{ msg }}</span>
+    <span id="full-name">{{ fullName }}</span>
     <button @click="toUppercase">Change firstName</button>
   </div>
 </template>
