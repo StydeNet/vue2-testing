@@ -36,3 +36,35 @@ test('fullName computed is firstName + lastName', () => {
   });
   expect(wrapper.vm.fullName).toBe('John Doe');
 });
+
+test('fullName computed is displayed', () => {
+  const wrapper = mount(App, {
+    computed: {
+      fullName: () => 'Jane Doe'
+    }
+  });
+
+  expect(wrapper.text()).toContain('Jane Doe');
+});
+
+test('toUppercase method is called when button is pressed', () => {
+  const toUppercase = jest.fn();
+  const wrapper = mount(App, {
+    methods: {
+      toUppercase
+    }
+  });
+  expect(toUppercase).toHaveBeenCalledTimes(0);
+  const button = wrapper.find('button');
+  button.trigger('click');
+  expect(toUppercase).toHaveBeenCalledTimes(1);
+});
+
+test('firstName is in uppercase when toUppercase method is called', () => {
+  const wrapper = mount(App);
+  wrapper.setData({
+    firstName: 'John'
+  });
+  wrapper.vm.toUppercase();
+  expect(wrapper.vm.firstName).toBe('JOHN');
+});
