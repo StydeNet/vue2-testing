@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div id="warning" v-if="!msg">Please fill the message</div>
+    <div id="warning" class="red" v-show="!msg">Please fill the message</div>
     <input type="text" v-model="msg">
     <span id="message">{{ msg }}</span>
-    <span id="full-name">{{ fullName }}</span>
+    <span id="full-name" :class="{ blue: msg }">{{ fullName }}</span>
     <button @click="toUppercase">Change firstName</button>
   </div>
 </template>
@@ -32,3 +32,8 @@ export default {
   }
 };
 </script>
+<style>
+.red {
+  color: red;
+}
+</style>

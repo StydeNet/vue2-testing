@@ -1,4 +1,5 @@
 {
   "editor.hover": false,
-  "editor.parameterHints": false
+  "editor.parameterHints": false,
+  "window.zoomLevel": 2
 }

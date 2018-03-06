@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils';
+import { mount } from '@vue/test-utils';
 import App from '@/App';
 
 test('component has a name', () => {
@@ -103,7 +103,7 @@ test('warning is displayed if msg is empty', () => {
   wrapper.setData({
     msg: ''
   });
-  expect(wrapper.contains('#warning')).toBe(true);
+  expect(wrapper.find('#warning').isVisible()).toBe(true);
 });
 
 test('warning is not displayed if msg is not empty', () => {
@@ -111,5 +111,32 @@ test('warning is not displayed if msg is not empty', () => {
   wrapper.setData({
     msg: 'something'
   });
-  expect(wrapper.contains('#warning')).toBe(false);
+  expect(wrapper.find('#warning').isVisible()).toBe(false);
+});
+
+test('warning message is a div', () => {
+  const wrapper = mount(App);
+  expect(wrapper.find('#warning').is('div')).toBe(true);
+});
+
+test('warning message is a not empty', () => {
+  const wrapper = mount(App);
+  expect(wrapper.find('#warning').isEmpty()).toBe(false);
+});
+
+test('warning message has red class', () => {
+  const wrapper = mount(App);
+  expect(wrapper.find('#warning').classes()).toContain('red');
+});
+
+test('fullName has blue class when msg is filled', () => {
+  const wrapper = mount(App);
+  wrapper.setData({ msg: 'something' });
+  expect(wrapper.find('#full-name').classes()).toContain('blue');
+});
+
+test('fullName does not have blue class when msg is empty', () => {
+  const wrapper = mount(App);
+  wrapper.setData({ msg: '' });
+  expect(wrapper.find('#full-name').classes()).not.toContain('blue');
 });
