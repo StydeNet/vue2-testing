@@ -1,8 +1,12 @@
 <template>
-  <div>My Task</div>
+  <div>{{ task }}</div>
 </template>
 <script>
 export default {
-  name: 'Task'
+  name: 'Task',
+
+  props: {
+    task: String
+  }
 };
 </script>
