@@ -46,4 +46,16 @@ describe('Component ToDoList', () => {
     });
     expect(wrapper.contains('#header')).toBe(true);
   });
+
+  test('it calls deleteTask method when task component emits delete event', () => {
+    const deleteTask = jest.fn();
+    const wrapper = shallow(ToDoList, {
+      methods: { deleteTask }
+    });
+    wrapper.setData({ tasks: ['MY PROP'] });
+    const task = wrapper.find(Task);
+    task.vm.$emit('delete');
+    expect(deleteTask).toHaveBeenCalledTimes(1);
+    expect(deleteTask.mock.calls[0][0]).toBe('MY PROP');
+  });
 });

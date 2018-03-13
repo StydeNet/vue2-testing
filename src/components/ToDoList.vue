@@ -5,6 +5,7 @@
       v-for="task in tasks"
       :key="task"
       :task="task"
+      @delete="deleteTask(task)"
     />
   </div>
 </template>
@@ -21,6 +22,12 @@ export default {
     };
   },
 
-  components: { Task, Header }
+  components: { Task, Header },
+
+  methods: {
+    deleteTask(task) {
+      console.log(task);
+    }
+  }
 };
 </script>
