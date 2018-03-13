@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     <Task
       v-for="task in tasks"
       :key="task"
@@ -9,6 +10,7 @@
 </template>
 <script>
 import Task from './Task';
+import Header from './Header';
 
 export default {
   name: 'ToDoList',
@@ -19,6 +21,6 @@ export default {
     };
   },
 
-  components: { Task }
+  components: { Task, Header }
 };
 </script>
