@@ -1,5 +1,13 @@
 <template>
-  <div>{{ task }}<span id="delete" @click="$emit('delete')">x</span></div>
+  <div>
+    <div>
+      <span id="delete" @click="$emit('delete')">
+        <slot name="close"></slot>
+      </span>
+    </div>
+    {{ task }}
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {

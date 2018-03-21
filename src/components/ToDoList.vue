@@ -6,7 +6,10 @@
       :key="task"
       :task="task"
       @delete="deleteTask(task)"
-    />
+    >
+    <span slot="close">x</span>
+    Random text
+    </Task>
   </div>
 </template>
 <script>

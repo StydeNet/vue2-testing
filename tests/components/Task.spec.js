@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount, shallow } from '@vue/test-utils';
 import Task from '@/components/Task';
 
 describe('Component Task', () => {
@@ -18,5 +18,23 @@ describe('Component Task', () => {
     const button = wrapper.find('#delete');
     button.trigger('click');
     expect(wrapper.emitted().delete).toBeTruthy();
+  });
+
+  test('it renders default slot', () => {
+    const wrapper = shallow(Task, {
+      slots: {
+        default: 'DEFAULT SLOT'
+      }
+    });
+    expect(wrapper.text()).toContain('DEFAULT SLOT');
+  });
+
+  test('it renders close slot', () => {
+    const wrapper = shallow(Task, {
+      slots: {
+        close: 'CLOSE SLOT'
+      }
+    });
+    expect(wrapper.find('#delete').text()).toContain('CLOSE SLOT');
   });
 });
