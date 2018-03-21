@@ -31,6 +31,7 @@
     "file-loader": "^1.1.4",
     "jest": "^22.2.2",
     "vue-loader": "^13.0.5",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.4.4",
     "vue-test-utils": "^1.0.0-beta.11",
     "webpack": "^3.6.0",

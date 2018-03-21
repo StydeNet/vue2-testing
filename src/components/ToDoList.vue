@@ -21,7 +21,8 @@ export default {
 
   data() {
     return {
-      tasks: []
+      tasks: [],
+      params: this.$route.params
     };
   },
 

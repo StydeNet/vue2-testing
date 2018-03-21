@@ -4,14 +4,22 @@ import Task from '@/components/Task';
 import Header from '@/components/Header';
 import TaskStub from '../stubs/Task';
 
+let mocks;
+
 describe('Component ToDoList', () => {
+  beforeEach(() => {
+    mocks = {
+      $route: {}
+    };
+  });
+
   test('it has name', () => {
-    const wrapper = shallow(ToDoList);
+    const wrapper = shallow(ToDoList, { mocks });
     expect(wrapper.name()).toBe('ToDoList');
   });
 
   test('it renders Task component', () => {
-    const wrapper = shallow(ToDoList);
+    const wrapper = shallow(ToDoList, { mocks });
     wrapper.setData({ tasks: ['hello'] });
     expect(wrapper.contains(Task)).toBe(true);
   });
@@ -20,7 +28,8 @@ describe('Component ToDoList', () => {
     const wrapper = shallow(ToDoList, {
       stubs: {
         Task: TaskStub
-      }
+      },
+      mocks
     });
     wrapper.setData({ tasks: [1, 2] });
     const tasks = wrapper.findAll(Task);
@@ -31,7 +40,8 @@ describe('Component ToDoList', () => {
     const wrapper = shallow(ToDoList, {
       stubs: {
         Task: TaskStub
-      }
+      },
+      mocks
     });
     wrapper.setData({ tasks: ['MY PROP'] });
     const task = wrapper.find(Task);
@@ -42,7 +52,8 @@ describe('Component ToDoList', () => {
     const wrapper = shallow(ToDoList, {
       stubs: {
         Header: '<div id="header"></div>'
-      }
+      },
+      mocks
     });
     expect(wrapper.contains('#header')).toBe(true);
   });
@@ -50,12 +61,25 @@ describe('Component ToDoList', () => {
   test('it calls deleteTask method when task component emits delete event', () => {
     const deleteTask = jest.fn();
     const wrapper = shallow(ToDoList, {
-      methods: { deleteTask }
+      methods: { deleteTask },
+      mocks
     });
     wrapper.setData({ tasks: ['MY PROP'] });
     const task = wrapper.find(Task);
     task.vm.$emit('delete');
     expect(deleteTask).toHaveBeenCalledTimes(1);
     expect(deleteTask.mock.calls[0][0]).toBe('MY PROP');
+  });
+
+  test('it gets params from $route', () => {
+    const wrapper = shallow(ToDoList, {
+      mocks: {
+        $route: {
+          params: 'MY PARAMS'
+        }
+      }
+    });
+
+    expect(wrapper.vm.params).toBe('MY PARAMS');
   });
 });
