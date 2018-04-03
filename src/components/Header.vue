@@ -9,15 +9,21 @@ export default {
 
   data() {
     return {
-      user: {}
+      user: {},
+      error: false
     };
   },
 
   created() {
     //call to axios
-    axios.get('/api/user').then(data => {
-      this.user = data;
-    });
+    axios
+      .get('/api/user')
+      .then(data => {
+        this.user = data;
+      })
+      .catch(() => {
+        this.error = true;
+      });
   }
 };
 </script>
