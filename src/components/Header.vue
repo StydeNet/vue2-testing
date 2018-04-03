@@ -2,12 +2,22 @@
   <div>MY HEADER</div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Header',
 
+  data() {
+    return {
+      user: {}
+    };
+  },
+
   created() {
     //call to axios
-    console.error('CALL TO AXIOS');
+    axios.get('/api/user').then(data => {
+      this.user = data;
+    });
   }
 };
 </script>
