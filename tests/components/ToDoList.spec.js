@@ -8,9 +8,7 @@ let mocks;
 
 describe('Component ToDoList', () => {
   beforeEach(() => {
-    mocks = {
-      $route: {}
-    };
+    mocks = {};
   });
 
   test('it has name', () => {
@@ -69,17 +67,5 @@ describe('Component ToDoList', () => {
     task.vm.$emit('delete');
     expect(deleteTask).toHaveBeenCalledTimes(1);
     expect(deleteTask.mock.calls[0][0]).toBe('MY PROP');
-  });
-
-  test('it gets params from $route', () => {
-    const wrapper = shallow(ToDoList, {
-      mocks: {
-        $route: {
-          params: 'MY PARAMS'
-        }
-      }
-    });
-
-    expect(wrapper.vm.params).toBe('MY PARAMS');
   });
 });

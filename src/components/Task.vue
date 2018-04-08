@@ -4,6 +4,7 @@
       <span id="delete" @click="$emit('delete')">
         <slot name="close"></slot>
       </span>
+      <router-link :to="{ path: '/task', params: { task } }"></router-link>
     </div>
     {{ task }}
     <slot></slot>

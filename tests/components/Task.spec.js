@@ -1,5 +1,7 @@
-import { mount, shallow } from '@vue/test-utils';
+import { mount, shallow, RouterLinkStub, config } from '@vue/test-utils';
 import Task from '@/components/Task';
+
+config.stubs['router-link'] = '<div />';
 
 describe('Component Task', () => {
   test('it has name', () => {
@@ -36,5 +38,20 @@ describe('Component Task', () => {
       }
     });
     expect(wrapper.find('#delete').text()).toContain('CLOSE SLOT');
+  });
+
+  test('it renders the TaskView router-link', () => {
+    const wrapper = shallow(Task, {
+      stubs: {
+        'router-link': RouterLinkStub
+      },
+      propsData: { task: 'MY TASK' }
+    });
+    expect(wrapper.find(RouterLinkStub).props().to).toEqual({
+      path: '/task',
+      params: {
+        task: 'MY TASK'
+      }
+    });
   });
 });
