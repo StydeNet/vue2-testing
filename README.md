@@ -13,24 +13,24 @@ Probaremos componentes de manera unitaria, comunicación entre ellos, renderizad
 
 ### Parte 1: Primeros pasos
 
-1. [Instalación de Jest y vue-test-utils]() - 3:30
-2. [Configuración de babel-jest y uso de mount]() - 5:15
-3. [Métodos find(), trigger(), html() y text()]() - 7:45
-4. [Computed properties y métodos]() - 6:45
-5. [Métodos findAll(), exists() y contains()]() - 6:00
-6. [Métodos isVisible(), is(), isEmpty() y classes()]() - 5:45
+1. [Instalación de Jest y vue-test-utils](https://styde.net/instalacion-de-jest-y-vue-test-utils/) - 3:30
+2. [Configuración de babel-jest y uso de mount](https://styde.net/configuracion-de-babel-jest-y-uso-de-mount/) - 5:15
+3. [Métodos find(), trigger(), html() y text()](https://styde.net/metodos-find-trigger-html-y-text-de-vue-test-utils/) - 7:45
+4. [Computed properties y métodos](https://styde.net/pruebas-de-computed-properties-y-metodos-con-vue-js-y-vue-test-utils/) - 6:45
+5. [Métodos findAll(), exists() y contains()](https://styde.net/uso-de-los-metodos-findall-exists-y-contains-de-vue-test-utils/) - 6:00
+6. [Métodos isVisible(), is(), isEmpty() y classes()](https://styde.net/uso-de-isvisible-is-isempty-y-classes-de-vue-test-utils/) - 5:45
 
 ### Parte 2: Comunicación entre componentes
 
-7. [Comprobar que un componente renderiza otro]() - 7:25
-8. [Probando paso de props entre componentes]() - 6:30
-9. [Sustituyendo la implementación de componentes con stubs y shallow]() - 10:20
-10. [Comprobar eventos emitidos desde un componente hijo hacia el padre]() - 7:00
-11. [Pruebas de slots con vue-test-utils]() - 6:05
+7. [Comprobar que un componente renderiza otro](https://styde.net/comprobar-que-un-componente-padre-renderiza-un-componente-hijo-con-vue-test-utils/) - 7:25
+8. [Probando paso de props entre componentes](https://styde.net/probando-paso-de-props-entre-componentes-con-vue-test-utils/) - 6:30
+9. [Sustituyendo la implementación de componentes con stubs y shallow](https://styde.net/sustituyendo-la-implementacion-de-componentes-con-stubs-y-shallow/) - 10:20
+10. [Comprobar eventos emitidos desde un componente hijo hacia el padre](https://styde.net/comprobar-eventos-emitidos-desde-un-componente-hijo-hacia-el-padre-con-vue-test-utils/) - 7:00
+11. [Pruebas de slots con vue-test-utils](https://styde.net/pruebas-de-slots-con-vue-test-utils/) - 6:05
 
 ### Parte 3
 
-12. [Pruebas con plugins: uso de localVue y mocks]() - 7:20
+12. [Pruebas con plugins: uso de localVue y mocks](https://styde.net/pruebas-con-plugins-uso-de-localvue-y-mocks-con-vue-test-utils/) - 7:20
 
 ### En Styde.net también puedes aprender a:
 
