@@ -8,7 +8,16 @@ let mocks;
 
 describe('Component ToDoList', () => {
   beforeEach(() => {
-    mocks = {};
+    mocks = {
+      $store: {
+        getters: {
+          allTasks: []
+        },
+        state: {
+          activeTask: {}
+        }
+      }
+    };
   });
 
   test('it has name', () => {
@@ -17,31 +26,31 @@ describe('Component ToDoList', () => {
   });
 
   test('it renders Task component', () => {
+    mocks.$store.getters.allTasks = ['STRING'];
     const wrapper = shallow(ToDoList, { mocks });
-    wrapper.setData({ tasks: ['hello'] });
     expect(wrapper.contains(Task)).toBe(true);
   });
 
   test('it renders as many Task components as tasks', () => {
+    mocks.$store.getters.allTasks = [1, 2];
     const wrapper = shallow(ToDoList, {
       stubs: {
         Task: TaskStub
       },
       mocks
     });
-    wrapper.setData({ tasks: [1, 2] });
     const tasks = wrapper.findAll(Task);
     expect(tasks.length).toBe(2);
   });
 
   test('it passes right props to Task component', () => {
+    mocks.$store.getters.allTasks = ['MY PROP'];
     const wrapper = shallow(ToDoList, {
       stubs: {
         Task: TaskStub
       },
       mocks
     });
-    wrapper.setData({ tasks: ['MY PROP'] });
     const task = wrapper.find(Task);
     expect(task.props()).toEqual({ task: 'MY PROP' });
   });
@@ -60,12 +69,20 @@ describe('Component ToDoList', () => {
     const deleteTask = jest.fn();
     const wrapper = shallow(ToDoList, {
       methods: { deleteTask },
-      mocks
+      mocks,
+      computed: {
+        allTasks: () => ['MY PROP']
+      }
     });
-    wrapper.setData({ tasks: ['MY PROP'] });
     const task = wrapper.find(Task);
     task.vm.$emit('delete');
     expect(deleteTask).toHaveBeenCalledTimes(1);
     expect(deleteTask.mock.calls[0][0]).toBe('MY PROP');
+  });
+
+  test('it renders activeTask name', () => {
+    mocks.$store.state.activeTask = { name: 'Task Name' };
+    const wrapper = shallow(ToDoList, { mocks });
+    expect(wrapper.text()).toContain('Task Name');
   });
 });
