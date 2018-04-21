@@ -2,5 +2,6 @@
   "editor.hover": false,
   "editor.parameterHints": false,
   "window.zoomLevel": 3,
-  "editor.fontFamily": "Menlo"
+  "editor.fontFamily": "Menlo",
+  "files.autoSave": "off"
 }
