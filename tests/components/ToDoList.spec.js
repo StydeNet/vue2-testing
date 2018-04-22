@@ -10,6 +10,7 @@ describe('Component ToDoList', () => {
   beforeEach(() => {
     mocks = {
       $store: {
+        dispatch: jest.fn(),
         getters: {
           allTasks: []
         },
@@ -66,9 +67,7 @@ describe('Component ToDoList', () => {
   });
 
   test('it calls deleteTask method when task component emits delete event', () => {
-    const deleteTask = jest.fn();
     const wrapper = shallow(ToDoList, {
-      methods: { deleteTask },
       mocks,
       computed: {
         allTasks: () => ['MY PROP']
@@ -76,13 +75,41 @@ describe('Component ToDoList', () => {
     });
     const task = wrapper.find(Task);
     task.vm.$emit('delete');
-    expect(deleteTask).toHaveBeenCalledTimes(1);
-    expect(deleteTask.mock.calls[0][0]).toBe('MY PROP');
+    expect(mocks.$store.dispatch).toHaveBeenCalledTimes(1);
+    expect(mocks.$store.dispatch.mock.calls[0][0]).toBe('deleteTask');
+    expect(mocks.$store.dispatch.mock.calls[0][1]).toBe(0);
+  });
+
+  test('it calls completeTask method when task component emits complete event', () => {
+    const wrapper = shallow(ToDoList, {
+      mocks,
+      computed: {
+        allTasks: () => ['MY PROP']
+      }
+    });
+    const task = wrapper.find(Task);
+    task.vm.$emit('complete');
+    expect(mocks.$store.dispatch).toHaveBeenCalledTimes(1);
+    expect(mocks.$store.dispatch.mock.calls[0][0]).toBe('completeTask');
+    expect(mocks.$store.dispatch.mock.calls[0][1]).toBe(0);
   });
 
   test('it renders activeTask name', () => {
     mocks.$store.state.activeTask = { name: 'Task Name' };
     const wrapper = shallow(ToDoList, { mocks });
     expect(wrapper.text()).toContain('Task Name');
+  });
+
+  test('it calls addTask action when button is clicked', () => {
+    const wrapper = shallow(ToDoList, { mocks });
+    const newTextInput = wrapper.find('input[type=text]');
+    newTextInput.element.value = 'My new task';
+    newTextInput.trigger('input');
+
+    const button = wrapper.find('button');
+    button.trigger('click');
+    expect(mocks.$store.dispatch).toHaveBeenCalledTimes(1);
+    expect(mocks.$store.dispatch.mock.calls[0][0]).toBe('addTask');
+    expect(mocks.$store.dispatch.mock.calls[0][1]).toBe('My new task');
   });
 });

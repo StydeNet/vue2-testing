@@ -5,6 +5,7 @@
         <slot name="close"></slot>
       </span>
       <router-link :to="{ path: '/task', params: { task } }"></router-link>
+      <button @click="$emit('complete')">Complete Task</button>
     </div>
     {{ task }}
     <slot></slot>

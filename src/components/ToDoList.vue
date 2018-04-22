@@ -1,12 +1,15 @@
 <template>
   <div>
     <Header />
+    <input type="text" v-model="newTaskText">
+    <button @click="addTask(newTaskText)">Add Task</button>
     <div>{{ activeTask.name }}</div>
     <Task
-      v-for="task in allTasks"
+      v-for="(task, index) in allTasks"
       :key="task"
       :task="task"
-      @delete="deleteTask(task)"
+      @delete="deleteTask(index)"
+      @complete="completeTask(index)"
     >
     <span slot="close">x</span>
     Random text
@@ -14,12 +17,18 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapActions } from 'vuex';
 import Task from './Task';
 import Header from './Header';
 
 export default {
   name: 'ToDoList',
+
+  data() {
+    return {
+      newTaskText: ''
+    };
+  },
 
   computed: {
     ...mapState(['activeTask']),
@@ -30,9 +39,7 @@ export default {
   components: { Task, Header },
 
   methods: {
-    deleteTask(task) {
-      console.log(task);
-    }
+    ...mapActions(['deleteTask', 'addTask', 'completeTask'])
   }
 };
 </script>
