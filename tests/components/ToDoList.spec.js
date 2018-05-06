@@ -111,5 +111,6 @@ describe('Component ToDoList', () => {
     expect(mocks.$store.dispatch).toHaveBeenCalledTimes(1);
     expect(mocks.$store.dispatch.mock.calls[0][0]).toBe('addTask');
     expect(mocks.$store.dispatch.mock.calls[0][1]).toBe('My new task');
+    expect(newTextInput.element.value).toBe('');
   });
 });
