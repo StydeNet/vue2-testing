@@ -6,7 +6,7 @@
     <div>{{ activeTask.name }}</div>
     <Task
       v-for="(task, index) in allTasks"
-      :key="task"
+      :key="index"
       :task="task"
       @delete="deleteTask(index)"
       @complete="completeTask(index)"

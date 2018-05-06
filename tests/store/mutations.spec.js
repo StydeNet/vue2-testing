@@ -9,14 +9,27 @@ describe('store mutations', () => {
     expect(state.tasks).toEqual([{ name: 'My Task', done: false }]);
   });
 
-  test('completeTask gets task index and sets done to true', () => {
+  test('completeTask gets task as param and sets done to true', () => {
+    const taskB = { name: 'TASK B', done: false };
     const state = {
-      tasks: [{ name: 'TASK A', done: false }, { name: 'TASK B', done: false }]
+      tasks: [{ name: 'TASK A', done: false }, taskB]
     };
-    mutations.completeTask(state, 1);
+    mutations.completeTask(state, taskB);
     expect(state.tasks).toEqual([
       { name: 'TASK A', done: false },
       { name: 'TASK B', done: true }
+    ]);
+  });
+
+  test('uncompleteTask gets task as param and sets done to false', () => {
+    const taskB = { name: 'TASK B', done: true };
+    const state = {
+      tasks: [{ name: 'TASK A', done: true }, taskB]
+    };
+    mutations.uncompleteTask(state, taskB);
+    expect(state.tasks).toEqual([
+      { name: 'TASK A', done: true },
+      { name: 'TASK B', done: false }
     ]);
   });
 

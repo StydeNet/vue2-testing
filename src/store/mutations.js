@@ -6,8 +6,12 @@ export default {
     });
   },
 
-  completeTask: (state, index) => {
-    state.tasks[index].done = true;
+  completeTask: (state, task) => {
+    task.done = true;
+  },
+
+  uncompleteTask: (state, task) => {
+    task.done = false;
   },
 
   deleteTask: (state, index) => {

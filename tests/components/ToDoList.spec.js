@@ -27,7 +27,7 @@ describe('Component ToDoList', () => {
   });
 
   test('it renders Task component', () => {
-    mocks.$store.getters.allTasks = ['STRING'];
+    mocks.$store.getters.allTasks = [{ name: 'Task' }];
     const wrapper = shallow(ToDoList, { mocks });
     expect(wrapper.contains(Task)).toBe(true);
   });
@@ -70,7 +70,7 @@ describe('Component ToDoList', () => {
     const wrapper = shallow(ToDoList, {
       mocks,
       computed: {
-        allTasks: () => ['MY PROP']
+        allTasks: () => [{ name: 'MY PROP' }]
       }
     });
     const task = wrapper.find(Task);
@@ -84,7 +84,7 @@ describe('Component ToDoList', () => {
     const wrapper = shallow(ToDoList, {
       mocks,
       computed: {
-        allTasks: () => ['MY PROP']
+        allTasks: () => [{ name: 'MY PROP' }]
       }
     });
     const task = wrapper.find(Task);
