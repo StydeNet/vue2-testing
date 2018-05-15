@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <ToDoList />
   </div>
 </template>
@@ -13,8 +13,6 @@ export default {
   components: { ToDoList }
 };
 </script>
-<style>
-.red {
-  color: red;
-}
+<style lang="scss">
+@import '../node_modules/bootstrap/scss/bootstrap';
 </style>

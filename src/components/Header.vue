@@ -1,5 +1,5 @@
 <template>
-  <div>MY HEADER</div>
+  <div class="alert alert-primary mt-3">MY HEADER</div>
 </template>
 <script>
 import axios from 'axios';

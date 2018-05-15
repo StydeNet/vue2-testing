@@ -11,6 +11,9 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "bootstrap": "^4.1.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
     "vue": "^2.5.11",
     "vue-jest": "^2.1.0"
   },

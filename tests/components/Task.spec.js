@@ -14,18 +14,24 @@ describe('Component Task', () => {
     };
   });
   test('it has name', () => {
-    const wrapper = mount(Task);
+    const wrapper = mount(Task, {
+      propsData: { task: {} }
+    });
     expect(wrapper.name()).toBe('Task');
   });
 
   test('it renders task prop', () => {
-    const wrapper = mount(Task);
-    wrapper.setProps({ task: { name: 'My new Task' } });
+    const wrapper = mount(Task, {
+      propsData: { task: {} }
+    });
+    wrapper.setProps({ task: { name: 'My new Task', done: true } });
     expect(wrapper.text()).toContain('My new Task');
   });
 
   test('it emmits delete event when delete button is clicked', () => {
-    const wrapper = mount(Task);
+    const wrapper = mount(Task, {
+      propsData: { task: {} }
+    });
     const button = wrapper.find('#delete');
     button.trigger('click');
     expect(wrapper.emitted().delete).toBeTruthy();
@@ -33,6 +39,7 @@ describe('Component Task', () => {
 
   test('it renders default slot', () => {
     const wrapper = shallow(Task, {
+      propsData: { task: {} },
       slots: {
         default: 'DEFAULT SLOT'
       }
@@ -42,6 +49,7 @@ describe('Component Task', () => {
 
   test('it renders close slot', () => {
     const wrapper = shallow(Task, {
+      propsData: { task: {} },
       slots: {
         close: 'CLOSE SLOT'
       }
@@ -112,5 +120,15 @@ describe('Component Task', () => {
     expect(mocks.$store.dispatch).toHaveBeenCalledTimes(1);
     expect(mocks.$store.dispatch.mock.calls[0][0]).toBe('uncompleteTask');
     expect(mocks.$store.dispatch.mock.calls[0][1]).toEqual({ name: 'My Task' });
+  });
+
+  test('renders correctly', () => {
+    const wrapper = shallow(Task, {
+      mocks,
+      propsData: {
+        task: { name: 'My Task' }
+      }
+    });
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });

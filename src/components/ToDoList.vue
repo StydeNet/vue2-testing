@@ -2,18 +2,19 @@
   <div>
     <Header />
     <input type="text" v-model="newTaskText">
-    <button @click="add(newTaskText)">Add Task</button>
+    <button @click="add(newTaskText)" class="btn btn-primary">Add Task</button>
     <div>{{ activeTask.name }}</div>
-    <Task
-      v-for="(task, index) in allTasks"
-      :key="index"
-      :task="task"
-      @delete="deleteTask(index)"
-      @complete="completeTask(index)"
-    >
-    <span slot="close">x</span>
-    Random text
-    </Task>
+    <div class="list-group mt-3">
+      <Task
+        v-for="(task, index) in allTasks"
+        :key="index"
+        :task="task"
+        @delete="deleteTask(index)"
+        @complete="completeTask(index)"
+      >
+      <span slot="close">x</span>
+      </Task>
+    </div>
   </div>
 </template>
 <script>
