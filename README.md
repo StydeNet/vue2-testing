@@ -28,9 +28,22 @@ Probaremos componentes de manera unitaria, comunicación entre ellos, renderizad
 10. [Comprobar eventos emitidos desde un componente hijo hacia el padre](https://styde.net/comprobar-eventos-emitidos-desde-un-componente-hijo-hacia-el-padre-con-vue-test-utils/)
 11. [Pruebas de slots con vue-test-utils](https://styde.net/pruebas-de-slots-con-vue-test-utils/)
 
-### Parte 3
+### Parte 3: Integración con plugins
 
 12. [Pruebas con plugins: uso de localVue y mocks](https://styde.net/pruebas-con-plugins-uso-de-localvue-y-mocks-con-vue-test-utils/)
+13. [Utilizando mocks de Jest con librerías externas](https://styde.net/utilizando-mocks-de-jest-con-librerias-externas/)
+14. [async / await con jest y vue-test-utils](https://styde.net/async-await-con-jest-y-vue-test-utils/)
+15. [Probar router-link y $route](https://styde.net/probando-router-link-y-route-de-vue-router-con-vue-test-utils/)
+16. [Probando el state y los getters de Vuex](https://styde.net/probando-el-state-y-los-getters-de-vuex-con-jest/)
+17. [Probando la integración del state y los getters de Vuex](https://styde.net/probando-la-integracion-del-state-y-los-getters-de-vuex-en-el-componente-con-vue-test-utils/)
+18. [Probando acciones y mutaciones del store con Jest](https://styde.net/probando-acciones-y-mutaciones-del-store-con-jest/)
+19. [Implementando las acciones del store de Vuex en el componente](https://styde.net/implementando-las-acciones-del-store-de-vuex-en-el-componente/)
+
+### Parte 4: Resumen y Snapshots
+
+20. [Mostrando nuestra App de Vue en el navegador](https://styde.net/mostrando-nuestra-app-de-vue-en-el-navegador/)
+21. [Invocando mutaciones desde una computed property](https://styde.net/invocando-mutaciones-desde-una-computed-property-de-vue-js-con-get-y-set/)
+22. [Snapshot testing con Jest en Vue.js](https://styde.net/snapshot-testing-con-jest-en-vue-js/)
 
 ### En Styde.net también puedes aprender a:
 
